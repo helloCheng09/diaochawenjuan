@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<script src="<?php echo PUBLICPATH; ?>yz/js/jQuery.min.js"></script>
+	<link rel="stylesheet" href="<?php echo PUBLICPATH; ?>yz/css/jzDetail.css">
+	<title><?php echo $title;?></title>
+</head>
+<body>
+<?php 
+$zimu=array(
+'0'=>'A','1'=>'B','2'=>'C','3'=>'D','4'=>'E','5'=>'F','6'=>'G','7'=>'H','8'=>'I','9'=>'J','10'=>'K','11'=>'L','12'=>'M','13'=>'N','14'=>'O','15'=>'P','16'=>'Q','17'=>'R','18'=>'S','19'=>'T','20'=>'U','21'=>'V','22'=>'W','23'=>'X','24'=>'Y','25'=>'Z'
+	);
+?>
+    <div class="wrap" style='background-image:url(<?php echo PUBLICPATH; ?>yz/img/tj-bg.jpg);'>	
+		<div>
+			<h3 class="wj-title"></h3>
+			<div class="huida-box">
+				<!-- 标题 -->
+				<div class="intro-title"><?php echo $title;?></div>
+				
+				<!-- 介绍 -->
+				<div class="insert-title line-hid">
+					<?php echo $descrip;?>
+					<span class="hid-btn">查看全部</span>
+				</div>
+				<!-- 状态
+				<div class="wj-intro">
+					<div class="intro-item">
+						<label>总共:</label>
+						<span>22题</span>
+					</div>
+					<div class="intro-item">
+						<label>已答:</label>
+						<span>12题</span>
+					</div>
+					<div class="intro-item">
+						<label>剩余:</label>
+						<span>10题</span>
+					</div>
+				</div> -->
+				<!-- 问答图表 -->
+				<form class="tijiao-form" method="post" action="">
+					<div class="wj-detail">
+
+					    <?php foreach ($dati as $k=>$item): ?>
+					    <?php 
+					    if($item['cate']==1){
+					    //单选题
+					    ?>
+					    <div class="det-item" data-id="<?php echo $item['id']; ?>">
+					    <input type="hidden" name="tid[]" value="<?php echo $item['id'];?>">
+					    <input type="hidden" name="cate[]" value="1">
+							<div class="form-head">
+								<dt>单选题</dt>
+									<!--
+								<div class="state-box">
+									<span class="icon-mock-not  icon-mock-done"></span>
+									<span class="state-not">未作答</span>
+									<span class="state-done">已作答</span>	
+								</div>
+								-->
+							</div>
+							<div class="det-title line-ellipsis" ><?php echo ($k+1).'、 '.$item['title'];?></div>
+							<div class="choice-box choice-raido">
+							<?php 
+						    $answerArr=$item['answer'];
+						    for ($i=0; $i < count($answerArr); $i++) { 
+						    ?>
+								<label class=""><input name="answer[<?php echo $item['id']; ?>][]" required="required" type="radio" value="<?php echo $answerArr[$i];?>" /><?php echo $zimu[$i].'. '.$answerArr[$i];?></label>
+							<?php } ?>							
+							</div>
+						</div>
+					    <?php
+					    }else if($item['cate']==2){
+					    //多选题
+					    ?>
+                        <div class="det-item" data-id="<?php echo $item['id']; ?>">
+                        <input type="hidden" name="tid[]"  value="<?php echo $item['id'];?>">
+                        <input type="hidden" name="cate[]" value="2">
+							<div class="form-head">
+								<dt>多选题</dt>
+									<!--
+								<div class="state-box">
+									<span class="icon-mock-not  icon-mock-done"></span>
+									<span class="state-not">未作答</span>
+									<span class="state-done">已作答</span>	
+								</div>
+								-->
+							</div>
+							<div class="det-title line-ellipsis"><?php echo ($k+1).'、 '.$item['title'];?></div>
+							<div class="choice-box choice-checkbox">
+							<?php 
+						    $answerArr=$item['answer'];
+						    for ($i=0; $i < count($answerArr); $i++) { 
+						    ?>
+								
+								<label class="" data-status="not-check" ><input name="answer[<?php echo $item['id']; ?>][]" type="checkbox"  value="<?php echo $answerArr[$i];?>"/><?php echo $zimu[$i].'. '.$answerArr[$i];?></label>
+
+							<?php } ?>	
+								
+							</div>
+						</div>
+					    <?php
+					    }else{
+					    ?>
+                        <div class="det-item" data-id="<?php echo $item['id']; ?>">
+                        <input type="hidden" name="tid[]" value="<?php echo $item['id'];?>">
+                        <input type="hidden" name="cate[]" value="0">
+							<div class="form-head">
+								<dt>问答题</dt>
+								<!--
+								<div class="state-box">
+									<span class="icon-mock-not  icon-mock-done"></span>
+									<span class="state-not">未作答</span>
+									<span class="state-done">已作答</span>	
+								</div>
+								-->
+							</div>
+							<div class="det-title line-ellipsis"><?php echo ($k+1).'、 '.$item['title'];?>
+						</div>
+						<div class="textarea-box">
+								<textarea placeholder="作答区域" required="required" name="answer[<?php echo $item['id']; ?>][]" id="wendaText"></textarea>
+							</div>
+						</div>
+					    <?php
+					    }
+					    ?>
+						<?php endforeach; ?>
+					</div>
+
+					<div class="btn-box">
+						<span class="pre-btn">
+							<!-- <input type="button" value="上一题"> -->
+							<input type="button" id="cantSubmit" style="display:none;"  value="确定">
+							<input type="submit" id="canSubmit" value="确定">
+							<!-- <input type="button" value="下一题"> -->
+						</span>
+					</div>
+				</form>
+				
+			</div>
+		</div>
+	</div>
+	<script src="<?php echo PUBLICPATH; ?>yz/js/autoTextarae.js"></script>
+</body>
+
+</html>

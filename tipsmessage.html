@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>提示信息</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div class="wait">
+        <img src="./home.png" alt="">
+        <p id="message">111</p>
+        <p class="tiaozhuan">页面跳转中<span id="num"></span></p>
+        <p id="chrome">如果您的浏览器不支持跳转,<a href="#">请点这里.</a></p>
+    </div>
+    <!-- <script type="text/javascript">
+        var num = 4;
+        function redirect() {
+            num--;
+            document.getElementById("num").innerHTML = num;
+            if (num < 2) {
+                document.getElementById("num").innerHTML = 1;
+                location.href = "<?php echo $url; ?>";
+            }
+        }
+        setInterval("redirect()", 1000);
+    </script> -->
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>Qing's Web</title>
+        <script src="js/jquery-1.11.0.js" type="text/javascript"></script>
+        <style type="text/css">
+            
+            .moveBar {
+                position: absolute;
+                width: 250px;
+                height: 300px;
+                background: #666;
+                border: solid 1px #000;
+                margin: 50px;
+                left:200px;
+                top:200px;
+            }
+            
+            #banner {
+                background: #52CCCC;
+                cursor: move;
+            }
+        </style>
+    </head>
+
+    <body >
+
+        <div class="moveBar">
+            <div id="banner">按住此处移动当前div</div>
+            <div class="content">这里是其它内容</div>
+        </div>
+        <script>
+            $("#banner").mouseenter(function(e) {
+                var obj = $('.moveBar');
+                obj.css("margin", "0px");
+                obj.css({
+                    'left': $('div.moveBar').offset().left + 50,
+                    'top': $('div.moveBar').offset().top + 50
+                });
+            })
+            $("#banner").mouseout(function() {
+                var obj = $('.moveBar');
+                //还原样式，并获取
+                obj.css({
+                    'left': $('div.moveBar').offset().left - 50,
+                    'top': $('div.moveBar').offset().top - 50
+                });
+                $(".moveBar").css("margin-left", "50px")
+                $(".moveBar").css("margin-top", "50px")
+            })
+            jQuery(document).ready(
+                function() {
+                    $('#banner').mousedown(
+                        function(event) {
+                            /*$(".moveBar").css("margin","0px")*/
+                            var isMove = true;
+                            var abs_x;
+                            var abs_y;
+                             abs_x = event.pageX - $('div.moveBar').offset().left;
+                             abs_y= event.pageY - $('div.moveBar').offset().top;
+                            $(document).mousemove(function(event) {
+                                if(isMove) {
+                                    var obj = $('.moveBar');
+                                    obj.css({
+                                        'left': event.pageX - abs_x,
+                                        'top': event.pageY - abs_y
+                                    });
+                                }
+                            }).mouseup(
+                                function() {
+                                    isMove = false;
+                                }
+                            );
+                        });
+                }
+            );
+        </script>  
+    </body>
+
+</html>

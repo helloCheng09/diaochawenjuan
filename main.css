@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.wait {
+  text-align: center;
+}
+img {
+  display: block;
+  width: 60px;
+  margin: 0 auto;
+  animation: jump 2000ms linear infinite;
+}
+@keyframes jump {
+  0% {
+    margin-top: 0;
+    margin-bottom: 0px;
+  }
+  50% {
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  100% {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+}
+p {
+  display: block;
+  width: 100%;
+  font-size: 13px;
+  line-height: 1;
+}
+#message {
+  font-size: 16px;
+  color: #333;
+}
+.tiaozhuan {
+  line-height: 2;
+  margin-top: 5px;
+  color: #989898;
+}
+#chrome a {
+  margin-left: 4px;
+  font-size: 14px;
+  color: #ff6464;
+}

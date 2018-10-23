@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<script src="/jQuery.min.js"></script>
+	<link rel="stylesheet" href="/edit.css">
+	<title>
+		<?php echo $wenjuan['title'] ?>
+	</title>
+
+</head>
+
+<body>
+	<div class="wrap">
+	</div>
+	<h3 class="wj-title">点击选择要推送的班级/学生</h3>
+	<form>
+		<!-- 编辑问卷发送学生 -->
+		<div class="sent-panel">
+			<div class="class-show">
+				<div class="teacher-box">
+					<ul>
+						<li class="teacher-item selected" data-status="selected">
+							<label for="className">全部班级</label>
+						</li>
+						<li class="teacher-item">
+							<label for="className">一年级1班</label>
+						</li>
+						<li class="teacher-item">
+							<label for="className">三年级2班</label>
+						</li>
+					</ul>
+				</div>
+
+				<div class="students-show">
+					<div class="btn-box">
+						<span class="select-all" id="selAll">全选</span>
+						<!-- <span class="select-all" id="reSelAll">反选</span> -->
+					</div>
+					<div class="student-list">
+						<div class="s-class-info">一年级1班</div>
+						<ul>
+							<li class="student-item">
+								<label for="student" class="selected">小明</label>
+								<input type="checkbox" name="student" checked="checked" value='0'>
+							</li>
+							<li class="student-item">
+								<label for="student" class="selected">小明</label>
+								<input type="checkbox" name="student" checked="checked" value='0'>
+							</li>	<li class="student-item">
+								<label for="student" class="selected">小明</label>
+								<input type="checkbox" name="student" checked="checked" value='0'>
+							</li>	<li class="student-item">
+								<label for="student" class="selected">小明</label>
+								<input type="checkbox" name="student" checked="checked" value='0'>
+							</li>	<li class="student-item">
+								<label for="student" class="selected">小明</label>
+								<input type="checkbox" name="student" checked="checked" value='0'>
+							</li>
+						</ul>
+					</div>
+					<div class="student-list">
+						<div class="s-class-info">一年级2班</div>
+						<ul>
+							<li class="student-item">
+								<label for="student" class="selected">小明</label>
+								<input type="checkbox" name="student" checked="checked" value='0'>
+							</li>	<li class="student-item">
+								<label for="student" class="selected">小明</label>
+								<input type="checkbox" name="student" checked="checked" value='0'>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</div>
+	</form>
+
+	</div>
+	<script src="./edit.js"></script>
+	<!-- <script src="<?php echo PUBLICPATH; ?>yz/js/autoTextarae.js"></script>
+	<script src="<?php echo PUBLICPATH; ?>yz/js/editRadio.js"></script>
+	<script src="<?php echo PUBLICPATH; ?>yz/js/editQa.js"></script>
+	<script src="<?php echo PUBLICPATH; ?>yz/js/edit.js"></script> -->
+</body>
+
+</html>

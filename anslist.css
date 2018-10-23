@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+a {
+    text-decoration: none;
+}
+
+.wrap {
+    padding-bottom: 20px;
+    font-size: 17px;
+}
+
+.wj-title {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 4;
+    margin: 0 20px;
+    color: rgb(97, 150, 255);
+}
+
+.answer-item{
+    background-color: #fff;
+}
+.avatar-img {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
